@@ -7,23 +7,16 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // localStorage.removeItem("user");
     const userDetails = localStorage.getItem("user");
     if (userDetails) {
       const parsedUser = JSON.parse(userDetails);
       console.log(parsedUser);
 
       setName(parsedUser.name);
-    }
-  }, []);
-
-  useEffect(() => {
-    console.log(name);
-
-    if (!name) {
+    } else {
       navigate("/login");
     }
-  }, [name, navigate]);
+  }, [navigate]);
 
   return (
     <div className="mt-5">
